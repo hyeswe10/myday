@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Batang&display=swap');
+
+//mixin
+@mixin flex($justify:center,$align:center){
+    display: flex;
+    justify-content: $justify;
+    align-items: $align;
+}
+@mixin textShadow($first:0px, $second:0px, $third:10px, $last:0.5){
+    text-shadow: $first $second $third rgba(0,0,0,$last);
+}
+@mixin button{
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    border: none;
+    border-radius: 10px;
+    font-family: "Gowun Batang", serif;
+    color: #333;
+}
+
+//전체영역
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-image: url(./img/background.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-size: 62.5%; //10px
+    font-family: "Gowun Batang", serif;
+    font-weight: 200;
+    color: #FFF;
+    z-index: -1;
+}
+#root{
+    background-color: rgba(0,0,0,0.2);
+}
+h2{
+    font-weight: normal;
+    font-size: 2.2rem;
+}
+
+//App영역
+.app{
+    height: 100vh;
+    @include flex();
+    flex-direction: column;
+}
+
+//Time영역
+.time{
+    font-weight: 700;
+    font-size: clamp(6rem,10vw,7rem);
+    @include textShadow();
+}
+
+//LoginForm영역
+.loginForm{
+    @include flex();
+    flex-direction: column;
+    width: 100%;
+    h2{
+        font-size: 2rem;
+        font-weight: normal;
+        text-align: center;
+        @include textShadow();
+    }
+    .input-button{
+        padding: 1rem 0;
+        @include flex();
+        gap: 1rem;
+        input{
+            font-size: 1.5rem;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+            border: none;
+            border-radius: 10px;
+            padding: 0.3rem 0.5rem;
+            font-family: "Gowun Batang", serif;
+            background-color: rgba(255,255,255,0.8);
+            outline: none;
+        }
+        button{
+            @include button();
+        }
+    }
+}
+
+//MainPage영역
+.main-page{
+    @include flex();
+    flex-direction: column;
+    gap: 1rem;
+    padding: 2rem 0;
+    h2{
+        @include textShadow();
+    }
+    button{
+        @include button();
+    }
+}
+
+//Quote 영역
+.quote{
+    font-size: 1.5rem;
+    padding: 0 2rem;
+    word-break: keep-all;
+    @include textShadow();
+    background-color: rgba(0,0,0,0.2);
+    border-radius: 10px;
+    padding: 0.5rem;
+}
