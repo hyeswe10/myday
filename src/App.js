@@ -22,17 +22,18 @@ const App = () => {
   },[])
   const handleTheme = (theme)=>{
     const $app = document.querySelector("#root > div");
-    if(theme === "blue"){
-      setTheme("blue-bg");
-
-    } else if(theme === "red"){
+    if(theme === "blue-bg"){
+      $app.classList.remove("red-bg","app");
+      $app.classList.add(theme);
+      setTheme(theme);
+    } else if(theme === "red-bg"){
       $app.classList.remove("app","blue-bg");
-      $app.classList.add("red-bg");
-      setTheme("red-bg");
+      $app.classList.add(theme);
+      setTheme(theme);
     } else {
       $app.classList.remove("red-bg","blue-bg");
-      $app.classList.add("app");
-      setTheme("background");
+      $app.classList.add(theme);
+      setTheme(theme);
     }
     if(theme){
       localStorage.setItem(THEME,theme);
