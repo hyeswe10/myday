@@ -1,4 +1,7 @@
+//기본폰트
 @import url('https://fonts.googleapis.com/css2?family=Gowun+Batang&display=swap');
+//블루폰트
+@import url('https://fonts.googleapis.com/css2?family=Dongle&display=swap');
 
 //mixin
 @mixin flex($justify:center,$align:center){
@@ -16,8 +19,18 @@
     box-shadow: 0 0 10px rgba(0,0,0,0.2);
     border: none;
     border-radius: 10px;
-    font-family: "Gowun Batang", serif;
     color: #333;
+    font-family: "Gowun Batang", serif;
+}
+@mixin input{
+    font-size: 1.5rem;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    border: none;
+    border-radius: 10px;
+    padding: 0.3rem 0.5rem;
+    font-family: "Gowun Batang", serif;
+    background-color: rgba(255,255,255,0.8);
+    outline: none;
 }
 
 //전체영역
@@ -25,10 +38,14 @@
     margin: 0;
     padding: 0;
 }
+a{
+    text-decoration: none;
+    color: inherit;
+}
+ul,li{
+    list-style: none;
+}
 body{
-    background-image: url(./img/background.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
     font-size: 62.5%; //10px
     font-family: "Gowun Batang", serif;
     font-weight: 200;
@@ -44,16 +61,81 @@ h2{
 }
 
 //App영역
-.app{
+.app,.blue-bg,.red-bg{
+    width: 100%;
     height: 100vh;
     @include flex();
     flex-direction: column;
+    img{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -2;
+    }
+    .page{
+        width: 100%;
+    }
+}
+
+//Theme 영역
+.theme{
+    position: fixed;
+    top: 50%;
+    right: 2%;
+    transform: translateY(-50%);
+    @include flex();
+    flex-direction: column;
+    gap: 2rem;
+    div{
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        background-size: cover;
+        &.blue{
+            background-image: url(./img/blue-bg.jpg);
+        }
+        &.pink{
+            background-image: url(./img/app.jpg);
+        }
+        &.red{
+            background-image: url(./img/red-bg.jpg);
+        }
+        &:hover{
+            scale: 1.1;
+            transition: 0.2s;
+        }
+    }
+}
+
+//Weather 영역
+.whole-weather{
+    @include flex();
+    .weather{
+        text-align: center;
+        font-size: 1.5rem;
+        @include textShadow();
+        padding-right: 3rem;
+        .name{
+            font-size: 1rem;
+        }
+    }
+    p{
+        font-size: 1.5rem;
+    }
+    img{
+        position: relative;
+        width: 50px;
+        height: 50px;
+    }
 }
 
 //Time영역
 .time{
     font-weight: 700;
-    font-size: clamp(6rem,10vw,7rem);
+    font-size: clamp(5rem,10vw,6rem);
     @include textShadow();
 }
 
@@ -73,14 +155,7 @@ h2{
         @include flex();
         gap: 1rem;
         input{
-            font-size: 1.5rem;
-            box-shadow: 0 0 10px rgba(0,0,0,0.2);
-            border: none;
-            border-radius: 10px;
-            padding: 0.3rem 0.5rem;
-            font-family: "Gowun Batang", serif;
-            background-color: rgba(255,255,255,0.8);
-            outline: none;
+            @include input();
         }
         button{
             @include button();
@@ -90,25 +165,176 @@ h2{
 
 //MainPage영역
 .main-page{
+    width: 100%;
     @include flex();
     flex-direction: column;
     gap: 1rem;
     padding: 2rem 0;
-    h2{
-        @include textShadow();
-    }
-    button{
-        @include button();
+    padding-top: 0;
+    .id-button{
+        @include flex();
+        gap: 1.5rem;
+        h2{
+            @include textShadow();
+            font-size: clamp(2rem,5vw,3rem);
+        }
+        button{
+            @include button();
+        }
     }
 }
 
 //Quote 영역
 .quote{
     font-size: 1.5rem;
-    padding: 0 2rem;
     word-break: keep-all;
     @include textShadow();
     background-color: rgba(0,0,0,0.2);
     border-radius: 10px;
     padding: 0.5rem;
+}
+
+//TodoForm
+.todo{
+    form{
+        @include flex();
+        gap: 1rem;
+        padding: 1rem 0;
+        input{
+            @include input();
+            font-family: "Gowun Batang", serif;
+        }
+        button{
+            @include button();
+            font-family: "Gowun Batang", serif;
+        }
+    }
+}
+
+//Select 영역
+.select{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.2);
+    z-index: 2;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    @include flex();
+    .whole-wrap{
+        box-sizing: border-box;
+        z-index: 3;
+        width: 25%;
+        height: 30%;
+        background-color: #333;
+        @include flex();
+        flex-direction: column;
+        border-radius: 20px;
+        gap: 1.5rem;
+        h2{
+            box-sizing: border-box;
+            word-break: keep-all;
+            text-align: center;
+            padding: 1rem;
+            padding-bottom: 0;
+            width: 100%;
+            font-size: clamp(1rem,2vw,2rem);
+        }
+        .btn-wrap{
+            position: relative;
+            width: 100%;
+            box-sizing: border-box;
+            @include flex();
+            gap: 1rem;
+            button{
+                @include button();
+                font-family: "Gowun Batang", serif;
+                font-size: clamp(0.3rem,1vw,1.2rem);
+                &:hover{
+                    background-color: #666;
+                    color: #eee;
+                }
+            }
+        }
+    }
+}
+
+//TodoList 영역
+.todo-list{
+    width: 100%;
+    height: 400px;
+    @include flex();
+    gap: 3rem;
+    ul{
+        box-sizing: border-box;
+        background-color: rgba(0,0,0,0.2);
+        width: 30%;
+        height: 100%;
+        @include flex(flex-start,flex-start);
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 1rem 2rem;
+        border-radius: 20px;
+        h2{
+            width: 100%;
+            text-align: center;
+        }
+        p{
+            font-size: 2rem;
+            text-align: center;
+            width: 100%;
+            padding-top: 3rem;
+        }
+        li{
+            width: 100%;
+            font-weight: normal;
+            font-size: 1.5rem;
+            @include flex(space-between,center);
+            gap: 1rem;
+            .check{
+                @include flex();
+                gap: 1rem;
+                input{
+                    width: 20px;
+                    height: 20px;
+                }
+            }
+            button{
+                @include button();
+                font-size: 1rem;
+                padding: 0.2rem;
+            }
+        }
+    }
+}
+
+//blue-theme 영역
+.blue-bg{
+    font-family: "Black Han Sans", sans-serif;
+    .page{
+        .loginForm{
+            @include flex();
+            flex-direction: column;
+            width: 100%;
+            h2{
+                font-size: 2rem;
+                font-weight: normal;
+                text-align: center;
+                @include textShadow();
+            }
+            .input-button{
+                padding: 1rem 0;
+                @include flex();
+                gap: 1rem;
+                input{
+                    @include input();
+                }
+                button{
+                    @include button();
+                    font-family: "Black Han Sans", sans-serif;
+                }
+            }
+        }
+    }
 }
