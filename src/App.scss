@@ -103,18 +103,38 @@ h2{
         }
         &.blue{
             background-image: url(./img/blue-bg.jpg);
+            &:hover{
+                scale: 1.1;
+                background-color: rgba(161, 220, 255,0.8);
+                background-image: none;
+                transition: 0.3s;
+                span{
+                    display: block;
+                }
+            }
         }
         &.pink{
             background-image: url(./img/app.jpg);
+            &:hover{
+                scale: 1.1;
+                background-color: rgba(255, 208, 216,0.8);
+                background-image: none;
+                transition: 0.3s;
+                span{
+                    display: block;
+                }
+            }
         }
         &.red{
             background-image: url(./img/red-bg.jpg);
-        }
-        &:hover{
-            scale: 1.1;
-            transition: 0.2s;
-            span{
-                display: block;
+            &:hover{
+                scale: 1.1;
+                background-color: rgba(153, 0, 0,0.8);
+                background-image: none;
+                transition: 0.3s;
+                span{
+                    display: block;
+                }
             }
         }
     }
@@ -427,6 +447,54 @@ h2{
                     }
                 }
             }
+            .todo-list{
+                width: 100%;
+                height: 400px;
+                @include flex();
+                gap: 3rem;
+                ul{
+                    box-sizing: border-box;
+                    background-color: rgba(0,0,0,0.2);
+                    width: 30%;
+                    height: 100%;
+                    @include flex(flex-start,flex-start);
+                    flex-direction: column;
+                    gap: 0.5rem;
+                    padding: 1rem 2rem;
+                    border-radius: 20px;
+                    h2{
+                        width: 100%;
+                        text-align: center;
+                    }
+                    p{
+                        font-size: 2rem;
+                        text-align: center;
+                        width: 100%;
+                        padding-top: 3rem;
+                    }
+                    li{
+                        width: 100%;
+                        font-weight: normal;
+                        font-size: 1.5rem;
+                        @include flex(space-between,center);
+                        gap: 1rem;
+                        .check{
+                            @include flex();
+                            gap: 1rem;
+                            input{
+                                width: 20px;
+                                height: 20px;
+                            }
+                        }
+                        button{
+                            @include button();
+                            font-family: "Jua", sans-serif;
+                            font-size: 1rem;
+                            padding: 0.2rem;
+                        }
+                    }
+                }
+            }
         }
     }
 }
@@ -555,6 +623,7 @@ h2{
                         }
                         button{
                             @include button();
+                            font-family: "Song Myung", serif;
                             font-size: 1rem;
                             padding: 0.2rem;
                         }
