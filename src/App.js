@@ -13,7 +13,7 @@ const App = () => {
   const USER_KEY = "user_name";
   const THEME = "theme";
   const [name,setName] = useState('');
-  const [theme,setTheme] = useState("background");
+  const [theme,setTheme] = useState("app");
   useEffect(()=>{
     const saved = localStorage.getItem(THEME);
     if(saved){
