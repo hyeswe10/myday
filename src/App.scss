@@ -102,7 +102,7 @@ h2{
             display: none;
         }
         &.blue{
-            background-image: url(./img/blue-bg.jpg);
+            background-image: url(./img/blue-bg.webp);
             &:hover{
                 scale: 1.1;
                 background-color: rgba(161, 220, 255,0.8);
@@ -114,7 +114,7 @@ h2{
             }
         }
         &.pink{
-            background-image: url(./img/app.jpg);
+            background-image: url(./img/app.webp);
             &:hover{
                 scale: 1.1;
                 background-color: rgba(255, 208, 216,0.8);
@@ -126,7 +126,7 @@ h2{
             }
         }
         &.red{
-            background-image: url(./img/red-bg.jpg);
+            background-image: url(./img/red-bg.webp);
             &:hover{
                 scale: 1.1;
                 background-color: rgba(153, 0, 0,0.8);

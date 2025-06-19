@@ -56,7 +56,7 @@ const App = () => {
   }
   return (
     <div className={theme}>
-      <img src={`${process.env.PUBLIC_URL}/img/${theme}.jpg`}/>
+      <img src={`${process.env.PUBLIC_URL}/img/${theme}.webp`}/>
       <Weather/>
       <Time/>
       {/* {!name && <LoginForm onLogin={handleName}/>}
